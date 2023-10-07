@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import Header from './components/header/header'
+import Footer from './components/footer/footer';
 import App from './app';
-import Footer from './components/footer/Footer';
+import './main.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
