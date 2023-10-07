@@ -1,5 +1,5 @@
-export function Header() {
+export default function Header() {
     return <>
-        <p>aaa</p>
+        <h1>HEADER</h1>
     </>
 }
