@@ -1,7 +1,9 @@
 import Account from "../../components/account/account";
+import HeaderLogout from "../../components/header-logout/header-logout";
 
 export default function User() {
     return <>
+        <HeaderLogout />
         <main className="main-user bg-dark">
             <div class="header">
                 <h1>Welcome back<br />Tony Jarvis!</h1>

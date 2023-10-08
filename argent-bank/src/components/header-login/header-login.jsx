@@ -1,7 +1,7 @@
 import argentBankLogo from '../../img/argentBankLogo.png'
 import { Link } from 'react-router-dom'
 
-export default function Header() {
+export default function HeaderLogin() {
     return <>
         <nav className="main-nav">
             <Link to='/' className="main-nav-logo" >

@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import HeaderLogin from "../../components/header-login/header-login";
 
 export default function SignIn() {
     return <>
+        <HeaderLogin />
         <main className="main bg-dark">
             <section className="sign-in-content">
                 <i className="fa fa-user-circle sign-in-icon"></i>
