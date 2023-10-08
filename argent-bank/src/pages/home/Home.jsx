@@ -1,3 +1,4 @@
+import Banner from "../../components/banner/banner";
 import Features from "../../components/features/features";
 
 import iconChat from '../../img/icon-chat.png'
@@ -6,6 +7,7 @@ import iconSecurity from '../../img/icon-security.png'
 
 export default function Home() {
     return <>
+        <Banner />
         <section className="features">
             <Features
                 image={iconChat}
