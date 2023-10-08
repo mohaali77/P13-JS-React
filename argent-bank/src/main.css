@@ -14,7 +14,11 @@ body {
 }
 
 .main {
-  flex: 1;
+  display: flex;
+}
+
+.main-user {
+  display: flow-root;
 }
 
 .bg-dark {
@@ -174,6 +178,7 @@ body {
   width: 300px;
   margin: 0 auto;
   margin-top: 3rem;
+  margin-bottom: 3rem;
   padding: 2rem;
 }
 
