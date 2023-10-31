@@ -1,7 +1,22 @@
 import { Link } from "react-router-dom";
 import HeaderLogin from "../../components/header-login/header-login";
+import { useEffect, useRef } from "react";
 
 export default function SignIn() {
+
+    let showErrorMsg = useRef(false)
+    let inputEmail = useRef(null);
+    // Utilisez useEffect pour effectuer des opérations après le rendu
+    useEffect(() => {
+        // Accédez à l'élément DOM en utilisant la référence
+        let email = inputEmail.current
+        console.log(email.value);
+        if (email.value === '') {
+            showErrorMsg.current = true
+        }
+    }, []);
+
+
     return <>
         <HeaderLogin />
         <main className="main bg-dark">
@@ -11,11 +26,14 @@ export default function SignIn() {
                 <form>
                     <div className="input-wrapper">
                         <label htmlFor="username">Username</label>
-                        <input type="text" id="username" />
+                        <input ref={inputEmail} type="text" id="username" />
                     </div>
                     <div className="input-wrapper">
                         <label htmlFor="password">Password</label>
                         <input type="password" id="password" />
+                        {showErrorMsg.current ? <div className="errorLogin">L'email ou le mot de passe est incorrect</div>
+                            : null}
+
                     </div>
                     <div className="input-remember">
                         <input type="checkbox" id="remember-me" />
