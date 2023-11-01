@@ -1,35 +1,44 @@
 import { Link } from "react-router-dom";
 import HeaderLogin from "../../components/header-login/header-login";
-import { useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 
 export default function SignIn() {
 
     let showErrorMsg = useRef(false)
-    let refEmail = useRef(null)
-    let email = refEmail.current
+    let showErrorEmailMsg = useRef(false)
+    const [email, setEmail] = useState(''); // Utilisez useState pour gérer l'e-mail
+
 
 
     function isFormValid(e) {
-
         let isFormValid = true
 
         e.preventDefault()
-        console.log(email.value);
+
+        console.log(email)
+
+        //on définit notre regex qui définira les conditions de validations du prenom 
+        let regexEmail = new RegExp(/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/);
+
+        if (email === '' || regexEmail.test(email) === false) {
+            isFormValid = false
+            showErrorEmailMsg = true
+        }
 
         if (isFormValid === true) {
             console.log('le formulaire est valide !');
         } else {
-            e.preventDefault()
-            console('le formulaire est invalide !')
+            console.log('le formulaire est invalide !')
+            showErrorMsg.current = true
         }
+
+        return isFormValid
     }
 
-    // Utilisez useEffect pour effectuer des opérations après le rendu
+    /*// Utilisez useEffect pour effectuer des opérations après le rendu
     useEffect(() => {
         // Accédez à l'élément DOM en utilisant la référence
-    }, []);
-
-
+    }, []);*/
 
 
     return <>
@@ -41,13 +50,15 @@ export default function SignIn() {
                 <form>
                     <div className="input-wrapper">
                         <label htmlFor="username">Username</label>
-                        <input ref={refEmail} type="text" id="username" />
+                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" id="username" />
+                        {showErrorEmailMsg.current ? <div className="errorEmail">L'email n'est pas valide</div>
+                            : <div className="errorEmail"></div>}
                     </div>
                     <div className="input-wrapper">
                         <label htmlFor="password">Password</label>
                         <input type="password" id="password" />
                         {showErrorMsg.current ? <div className="errorLogin">L'email ou le mot de passe est incorrect</div>
-                            : null}
+                            : <div className="errorLogin"></div>}
 
                     </div>
                     <div className="input-remember">
