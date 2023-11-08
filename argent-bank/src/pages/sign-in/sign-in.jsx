@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import HeaderLogin from "../../components/header-login/header-login";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function SignIn() {
 
@@ -24,8 +24,9 @@ export default function SignIn() {
         userRef.current.focus()
     }, [])
 
-    const [showErrorEmailMsg, setShowErrorEmailMsg] = useState(false);
-    const [email, setEmail] = useState('');
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+    }
 
 
 
@@ -36,7 +37,7 @@ export default function SignIn() {
                 <section className="sign-in-content">
                     <i className="fa fa-user-circle sign-in-icon"></i>
                     <h1>Sign In</h1>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="input-wrapper">
                             <label htmlFor="username">Username</label>
                             <input
@@ -58,7 +59,6 @@ export default function SignIn() {
                                 value={pwd}
                                 required
                             />
-
                         </div>
                         <div className="input-remember">
                             <input type="checkbox" id="remember-me" />
