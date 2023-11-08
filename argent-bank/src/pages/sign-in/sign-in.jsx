@@ -20,15 +20,18 @@ export default function SignIn() {
         setErrMsg('')
     }, [user, pwd])
 
+
     useEffect(() => {
         userRef.current.focus()
     }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        console.log(user, pwd)
+        setUser('')
+        setPwd('')
+        setSuccess(true)
     }
-
-
 
     return (
         <>
