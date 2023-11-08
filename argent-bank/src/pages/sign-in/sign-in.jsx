@@ -13,7 +13,15 @@ export default function SignIn() {
     const [success, setSuccess] = useState(false)
 
     useEffect(() => {
-        useRef.current.focus()
+        userRef.current.focus()
+    }, [])
+
+    useEffect(() => {
+        setErrMsg('')
+    }, [user, pwd])
+
+    useEffect(() => {
+        userRef.current.focus()
     }, [])
 
     const [showErrorEmailMsg, setShowErrorEmailMsg] = useState(false);
