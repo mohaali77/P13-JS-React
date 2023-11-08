@@ -1,7 +1,10 @@
 // reducers/index.js
 import { combineReducers } from "redux";
+import userReducer from "./user.reducer";
+import postReducer from "./post.reducer";
 
 
 export default combineReducers({
-    //Reducers
+    userReducer,
+    postReducer
 });

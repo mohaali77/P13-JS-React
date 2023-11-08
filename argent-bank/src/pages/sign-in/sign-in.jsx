@@ -9,7 +9,6 @@ export default function SignIn() {
     const [user, setUser] = useState('')
     const [pwd, setPwd] = useState('')
     const [errMsg, setErrMsg] = useState('')
-    const [success, setSuccess] = useState(false)
 
     useEffect(() => {
         userRef.current.focus()
@@ -27,9 +26,17 @@ export default function SignIn() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(user, pwd)
+        // gestion des regex
+        let regexEmail = new RegExp(/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/);
+
+        if (user || regexEmail.test(user) === false) {
+            alert("l'adresse mail n'est pas valide")
+        }
+
+
+
         setUser('')
         setPwd('')
-        setSuccess(true)
     }
 
     return (
@@ -67,7 +74,6 @@ export default function SignIn() {
                             <label htmlFor="remember-me">Remember me</label>
                         </div>
                         <button className="sign-in-button">Sign In</button>
-                        <p ref={errRef} className={errMsg ? 'errmsg' : "offscreen"} aria-live='assertive'>{errMsg}</p>
                     </form>
                 </section>
             </main>
