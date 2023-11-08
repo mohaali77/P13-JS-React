@@ -27,27 +27,7 @@ export default function SignIn() {
     const [showErrorEmailMsg, setShowErrorEmailMsg] = useState(false);
     const [email, setEmail] = useState('');
 
-    function isFormValid(e) {
-        e.preventDefault();
 
-        let isFormValid = true;
-        const regexEmail = new RegExp(/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/);
-
-        if (email === '' || !regexEmail.test(email)) {
-            isFormValid = false;
-            setShowErrorEmailMsg(true);
-        } else {
-            setShowErrorEmailMsg(false);
-        }
-
-        if (isFormValid === true) {
-            console.log('Le formulaire est valide !');
-        } else {
-            console.log('Le formulaire est invalide !');
-        }
-
-        return isFormValid;
-    }
 
     return (
         <>
@@ -60,30 +40,34 @@ export default function SignIn() {
                         <div className="input-wrapper">
                             <label htmlFor="username">Username</label>
                             <input
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                ref={userRef}
+                                onChange={(e) => setUser(e.target.value)}
                                 type="text"
                                 id="username"
+                                value={user}
+                                required
                             />
-                            {showErrorEmailMsg ? (
-                                <div className="errorLogin">L'e-mail n'est pas valide</div>
-                            ) : (
-                                <div className="errorLogin"></div>
-                            )}
                         </div>
 
                         <div className="input-wrapper">
                             <label htmlFor="password">Password</label>
-                            <input type="password" id="password" />
+                            <input
+                                type="password"
+                                id="password"
+                                onChange={(e) => setPwd(e.target.value)}
+                                value={pwd}
+                                required
+                            />
 
                         </div>
                         <div className="input-remember">
                             <input type="checkbox" id="remember-me" />
                             <label htmlFor="remember-me">Remember me</label>
                         </div>
-                        <Link to="/user" onClick={isFormValid} className="sign-in-button">
+                        <Link to="/user" className="sign-in-button">
                             Sign In
                         </Link>
+                        <p ref={errRef} className={errMsg ? 'errmsg' : "offscreen"} aria-live='assertive'>{errMsg}</p>
                     </form>
                 </section>
             </main>
