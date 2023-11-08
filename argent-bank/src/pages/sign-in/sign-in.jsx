@@ -67,9 +67,7 @@ export default function SignIn() {
                             <input type="checkbox" id="remember-me" />
                             <label htmlFor="remember-me">Remember me</label>
                         </div>
-                        <Link to="/user" className="sign-in-button">
-                            Sign In
-                        </Link>
+                        <button className="sign-in-button">Sign In</button>
                         <p ref={errRef} className={errMsg ? 'errmsg' : "offscreen"} aria-live='assertive'>{errMsg}</p>
                     </form>
                 </section>
