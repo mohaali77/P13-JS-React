@@ -1,8 +1,19 @@
 import { Link } from "react-router-dom";
 import HeaderLogin from "../../components/header-login/header-login";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function SignIn() {
+
+    const userRef = useRef();
+    const errRef = useRef();
+
+    const [user, setUser] = useState('')
+    const [pwd, setPwd] = useState('')
+    const [errMsg, setErrMsg] = useState('')
+    const [success, setSuccess] = useState(false)
+
+    useEffect(() => {
+    }, [])
 
     const [showErrorEmailMsg, setShowErrorEmailMsg] = useState(false);
     const [email, setEmail] = useState('');
