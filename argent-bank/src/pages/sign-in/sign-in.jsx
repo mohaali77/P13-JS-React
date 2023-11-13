@@ -1,13 +1,9 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import HeaderLogin from "../../components/header-login/header-login";
-import { useEffect, useState, useRef } from "react";
 import { login } from "../../features/userSlice";
+import HeaderLogin from "../../components/header-login/header-login";
 
 export default function SignIn() {
-
-    const userRef = useRef();
-    //const errRef = useRef();
-
 
     const [user, setUser] = useState('')
     const [password, setPassword] = useState('')
@@ -15,13 +11,15 @@ export default function SignIn() {
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        dispatch(login({
-            user: user,
-            password: password,
-            loggedIn: true
-        }))
-
+        e.preventDefault();
+        console.log(user, password);
+        dispatch(
+            login({
+                name: user,
+                password: password,
+                loggedIn: true,
+            })
+        )
     }
 
     return (
@@ -35,7 +33,6 @@ export default function SignIn() {
                         <div className="input-wrapper">
                             <label htmlFor="username">Username</label>
                             <input
-                                ref={userRef}
                                 onChange={(e) => setUser(e.target.value)}
                                 type="text"
                                 id="username"
