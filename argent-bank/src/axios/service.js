@@ -1,14 +1,25 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3001/';
+const API_URL = 'http://localhost:3001/api/v1/user/';
 
-export async function loginUser() {
+// ...
+
+export async function loginUser(userCredentials) {
     try {
-        const response = await axios.post(`${API_URL}login`);
-        return response.data
+        const response = await axios.post(`${API_URL}login`, userCredentials, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        return response.data;
     } catch (error) {
+        console.error('Erreur lors de la connexion', error);
+        throw error;
     }
 }
+
+// ...
+
 
 export async function getUserProfile() {
     try {

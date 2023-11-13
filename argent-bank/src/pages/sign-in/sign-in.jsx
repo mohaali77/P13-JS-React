@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../features/userSlice";
-import { loginUser } from "../../axios/service";  // Importez vos fonctions Axios depuis le service
+import { loginUser } from "../../axios/service";
 import HeaderLogin from "../../components/header-login/header-login";
 
 export default function SignIn() {
@@ -12,15 +12,21 @@ export default function SignIn() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            const response = await loginUser({ user, password });
+        console.log(user, password);
 
-            if (response.success) {
+        try {
+            const response = await loginUser(
+                {
+                    "email": user,
+                    "password": password
+                }
+            );
+
+            if (response) {
                 dispatch(
                     login({
                         name: user,
                         password: password,
-                        loggedIn: true,
                     })
                 );
                 console.log('Connexion réussie');
