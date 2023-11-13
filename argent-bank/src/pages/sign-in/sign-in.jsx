@@ -1,5 +1,7 @@
+import { useDispatch } from "react-redux";
 import HeaderLogin from "../../components/header-login/header-login";
 import { useEffect, useState, useRef } from "react";
+import { login } from "../../features/userSlice";
 
 export default function SignIn() {
 
@@ -8,34 +10,18 @@ export default function SignIn() {
 
 
     const [user, setUser] = useState('')
-    const [pwd, setPwd] = useState('')
-    //const [errMsg, setErrMsg] = useState('')
+    const [password, setPassword] = useState('')
 
-    useEffect(() => {
-        userRef.current.focus()
-    }, [])
+    const dispatch = useDispatch();
 
-    /*useEffect(() => {
-        setErrMsg('')
-    }, [user, pwd])*/
-
-
-    useEffect(() => {
-        userRef.current.focus()
-    }, [])
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(user, pwd)
-        // gestion des regex
-        let regexEmail = new RegExp(/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/);
+        dispatch(login({
+            user: user,
+            password: password,
+            loggedIn: true
+        }))
 
-        if (user || regexEmail.test(user) === false) {
-            alert("l'adresse mail n'est pas valide")
-        }
-
-        setUser('')
-        setPwd('')
     }
 
     return (
@@ -45,7 +31,7 @@ export default function SignIn() {
                 <section className="sign-in-content">
                     <i className="fa fa-user-circle sign-in-icon"></i>
                     <h1>Sign In</h1>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={(e) => handleSubmit(e)}>
                         <div className="input-wrapper">
                             <label htmlFor="username">Username</label>
                             <input
@@ -63,8 +49,8 @@ export default function SignIn() {
                             <input
                                 type="password"
                                 id="password"
-                                onChange={(e) => setPwd(e.target.value)}
-                                value={pwd}
+                                onChange={(e) => setPassword(e.target.value)}
+                                value={password}
                                 required
                             />
                         </div>
@@ -75,7 +61,7 @@ export default function SignIn() {
                         <button type="submit" className="sign-in-button">Sign In</button>
                     </form>
                 </section>
-            </main>
+            </main >
         </>
     );
 }
