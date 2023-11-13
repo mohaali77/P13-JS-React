@@ -1,25 +1,36 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../features/userSlice";
+import { loginUser } from "../../axios/service";  // Importez vos fonctions Axios depuis le service
 import HeaderLogin from "../../components/header-login/header-login";
 
 export default function SignIn() {
-
-    const [user, setUser] = useState('')
-    const [password, setPassword] = useState('')
-
+    const [user, setUser] = useState('');
+    const [password, setPassword] = useState('');
     const dispatch = useDispatch();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(user, password);
-        dispatch(
-            login({
-                name: user,
-                password: password,
-                loggedIn: true,
-            })
-        )
+
+        try {
+            const response = await loginUser({ user, password });
+
+            if (response.success) {
+                dispatch(
+                    login({
+                        name: user,
+                        password: password,
+                        loggedIn: true,
+                    })
+                );
+                console.log('Connexion réussie');
+            } else {
+                console.log('Échec de la connexion: Identifiants incorrects');
+            }
+
+        } catch (error) {
+            console.error('Erreur lors de la connexion', error);
+        }
     }
 
     return (
