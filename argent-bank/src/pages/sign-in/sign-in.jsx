@@ -4,19 +4,20 @@ import { useEffect, useState, useRef } from "react";
 export default function SignIn() {
 
     const userRef = useRef();
-    const errRef = useRef();
+    //const errRef = useRef();
+
 
     const [user, setUser] = useState('')
     const [pwd, setPwd] = useState('')
-    const [errMsg, setErrMsg] = useState('')
+    //const [errMsg, setErrMsg] = useState('')
 
     useEffect(() => {
         userRef.current.focus()
     }, [])
 
-    useEffect(() => {
+    /*useEffect(() => {
         setErrMsg('')
-    }, [user, pwd])
+    }, [user, pwd])*/
 
 
     useEffect(() => {
@@ -32,8 +33,6 @@ export default function SignIn() {
         if (user || regexEmail.test(user) === false) {
             alert("l'adresse mail n'est pas valide")
         }
-
-
 
         setUser('')
         setPwd('')
