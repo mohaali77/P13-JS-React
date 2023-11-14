@@ -30,8 +30,6 @@ export default function SignIn() {
                     })
                 );
                 console.log('Connexion réussie');
-            } else {
-                console.log('Échec de la connexion: Identifiants incorrects');
             }
 
         } catch (error) {
