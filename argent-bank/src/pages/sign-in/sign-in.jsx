@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../features/userSlice";
 import { loginUser } from "../../axios/service";
 import HeaderLogin from "../../components/header-login/header-login";
+import { Navigate } from "react-router-dom";
 
 export default function SignIn() {
     const [user, setUser] = useState('');
@@ -15,11 +16,10 @@ export default function SignIn() {
         console.log(user, password);
 
         try {
-            const response = await loginUser(
-                {
-                    "email": user,
-                    "password": password
-                }
+            const response = await loginUser({
+                "email": user,
+                "password": password
+            }
             );
 
             if (response) {
@@ -30,6 +30,7 @@ export default function SignIn() {
                     })
                 );
                 console.log('Connexion réussie');
+                <Navigate to="/user" />
             }
 
         } catch (error) {
