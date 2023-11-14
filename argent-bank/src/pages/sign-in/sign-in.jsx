@@ -30,7 +30,8 @@ export default function SignIn() {
                     })
                 );
                 console.log('Connexion réussie');
-                <Navigate to="/user" />
+                return <Navigate to="/user" />
+
             }
 
         } catch (error) {
