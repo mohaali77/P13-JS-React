@@ -79,7 +79,7 @@ export default function SignIn() {
     return (
         <>
             {
-                userState.isConnected ? navigate('/user') :
+                userState && userState.isConnected ? navigate('/user') :
                     <main className="main bg-dark">
                         <section className="sign-in-content">
                             <i className="fa fa-user-circle sign-in-icon"></i>
