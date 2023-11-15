@@ -1,53 +1,43 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login, selectUser } from "../../features/userSlice";
 import { loginUser } from "../../axios/service";
 import { getUserProfile } from "../../axios/service";
 import HeaderLogin from "../../components/header-login/header-login";
-import { useNavigate } from "react-router-dom";
 import HeaderLogout from "../../components/header-logout/header-logout";
 
 
 export default function SignIn() {
-    const [user, setUser] = useState('');
-    const [password, setPassword] = useState('');
+
     const dispatch = useDispatch();
     const navigate = useNavigate()
+    const [user, setUser] = useState('');
+    const [password, setPassword] = useState('');
     const isUserConnected = useSelector(selectUser)
-    let token = localStorage.getItem("token")
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        console.log(user, password);
 
         try {
             const response = await loginUser({ "email": user, "password": password, });
 
             if (response) {
-                dispatch(
-                    login({
-                        email: user,
-                        password: password,
-                        token: response.body.token,
-                        isConnected: true
-                    })
-                );
-                console.log('Connexion réussie');
                 localStorage.setItem('token', response.body.token);
+                let token = localStorage.getItem('token');
 
                 const response1 = await getUserProfile(token);
 
                 if (response1) {
                     dispatch(
                         login({
+                            firstName: response1.body.firstName,
+                            lastName: response1.body.lastName,
+                            id: response1.body.id,
                             email: user,
                             password: password,
                             token: response.body.token,
                             isConnected: true,
-                            firstName: response1.body.firstName,
-                            lastName: response1.body.lastName,
-                            id: response1.body.id,
                         })
                     );
                 }
