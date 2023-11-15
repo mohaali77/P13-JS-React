@@ -45,6 +45,10 @@ export default function SignIn() {
                 if (response1) {
                     dispatch(
                         login({
+                            email: user,
+                            password: password,
+                            token: response.body.token,
+                            isConnected: true,
                             firstName: response.body.firstName,
                             lastName: response.body.lastName,
                             id: response.body.id,
