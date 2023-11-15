@@ -8,10 +8,10 @@ import HeaderLogout from "../../components/header-logout/header-logout";
 
 
 export default function SignIn() {
-    const navigate = useNavigate()
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const isUserConnected = useSelector(selectUser)
 
     const handleSubmit = async (e) => {
