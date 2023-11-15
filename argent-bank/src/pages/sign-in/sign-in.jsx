@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, selectUser } from "../../features/userSlice";
 import { loginUser } from "../../axios/service";
 import HeaderLogin from "../../components/header-login/header-login";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import HeaderLogout from "../../components/header-logout/header-logout";
 
 
 export default function SignIn() {
+    const navigate = useNavigate()
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
@@ -20,7 +22,7 @@ export default function SignIn() {
         try {
             const response = await loginUser({
                 "email": user,
-                "password": password
+                "password": password,
             }
             );
 
@@ -32,7 +34,7 @@ export default function SignIn() {
                     })
                 );
                 console.log('Connexion réussie');
-                return <Navigate to="/user" />
+                navigate('/user')
 
             }
 
@@ -43,7 +45,7 @@ export default function SignIn() {
 
     return (
         <>
-            {<HeaderLogin />}
+            {isUserConnected ? <HeaderLogout /> : <HeaderLogin />}
             <main className="main bg-dark">
                 <section className="sign-in-content">
                     <i className="fa fa-user-circle sign-in-icon"></i>
