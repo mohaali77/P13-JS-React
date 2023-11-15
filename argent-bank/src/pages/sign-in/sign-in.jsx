@@ -31,8 +31,14 @@ export default function SignIn() {
                     login({
                         name: user,
                         password: password,
+                        token: response.body.token
                     })
                 );
+                console.log('Connexion réussie');
+                console.log(response.body.token);
+
+                localStorage.setItem('token', response.body.token);
+
                 console.log('Connexion réussie');
                 navigate('/user')
 
