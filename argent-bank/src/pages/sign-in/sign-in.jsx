@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login, selectUser } from "../../features/userSlice";
@@ -14,7 +14,7 @@ export default function SignIn() {
     const navigate = useNavigate()
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
-    const isUserConnected = useSelector(selectUser)
+    const userState = useSelector(selectUser)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -50,43 +50,72 @@ export default function SignIn() {
         }
     }
 
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+
+        if (token) {
+            // Utilisez le token pour récupérer le profil de l'utilisateur
+            getUserProfile(token)
+                .then((response) => {
+                    if (response) {
+                        dispatch(
+                            login({
+                                firstName: response.body.firstName,
+                                lastName: response.body.lastName,
+                                id: response.body.id,
+                                email: response.body.email,
+                                password: response.body.password,
+                                token: token,
+                                isConnected: true,
+                            })
+                        );
+                    }
+                })
+                .catch((error) => {
+                    console.error('Erreur lors de la récupération du profil', error);
+                });
+        }
+    }, [dispatch]);
+
     return (
         <>
-            {isUserConnected ? <HeaderLogout /> : <HeaderLogin />}
-            <main className="main bg-dark">
-                <section className="sign-in-content">
-                    <i className="fa fa-user-circle sign-in-icon"></i>
-                    <h1>Sign In</h1>
-                    <form onSubmit={(e) => handleSubmit(e)}>
-                        <div className="input-wrapper">
-                            <label htmlFor="username">Username</label>
-                            <input
-                                onChange={(e) => setUser(e.target.value)}
-                                type="text"
-                                id="username"
-                                value={user}
-                                required
-                            />
-                        </div>
+            {
+                //userState && userState.firstName ? navigate('/user') :
+                <main className="main bg-dark">
+                    <section className="sign-in-content">
+                        <i className="fa fa-user-circle sign-in-icon"></i>
+                        <h1>Sign In</h1>
+                        <form onSubmit={(e) => handleSubmit(e)}>
+                            <div className="input-wrapper">
+                                <label htmlFor="username">Username</label>
+                                <input
+                                    onChange={(e) => setUser(e.target.value)}
+                                    type="text"
+                                    id="username"
+                                    value={user}
+                                    required
+                                />
+                            </div>
 
-                        <div className="input-wrapper">
-                            <label htmlFor="password">Password</label>
-                            <input
-                                type="password"
-                                id="password"
-                                onChange={(e) => setPassword(e.target.value)}
-                                value={password}
-                                required
-                            />
-                        </div>
-                        <div className="input-remember">
-                            <input type="checkbox" id="remember-me" />
-                            <label htmlFor="remember-me">Remember me</label>
-                        </div>
-                        <button type="submit" className="sign-in-button">Sign In</button>
-                    </form>
-                </section>
-            </main >
+                            <div className="input-wrapper">
+                                <label htmlFor="password">Password</label>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    value={password}
+                                    required
+                                />
+                            </div>
+                            <div className="input-remember">
+                                <input type="checkbox" id="remember-me" />
+                                <label htmlFor="remember-me">Remember me</label>
+                            </div>
+                            <button type="submit" className="sign-in-button">Sign In</button>
+                        </form>
+                    </section>
+                </main >
+            }
         </>
     );
 }
