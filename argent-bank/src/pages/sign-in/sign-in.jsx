@@ -22,11 +22,7 @@ export default function SignIn() {
         console.log(user, password);
 
         try {
-            const response = await loginUser({
-                "email": user,
-                "password": password,
-            }
-            );
+            const response = await loginUser({ "email": user, "password": password, });
 
             if (response) {
                 dispatch(
@@ -49,44 +45,19 @@ export default function SignIn() {
                             password: password,
                             token: response.body.token,
                             isConnected: true,
-                            firstName: response.body.firstName,
-                            lastName: response.body.lastName,
-                            id: response.body.id,
+                            firstName: response1.body.firstName,
+                            lastName: response1.body.lastName,
+                            id: response1.body.id,
                         })
                     );
                 }
 
                 navigate('/user')
-
-
-
             }
 
         } catch (error) {
             console.error('Erreur lors de la connexion', error);
         }
-
-        /*try {
-            const response = await loginUser(token);
-
-            if (response) {
-                dispatch(
-                    login({
-                        email: user,
-                        password: password,
-                        token: response.body.token,
-                        isConnected: true
-                    })
-                );
-                console.log('Connexion réussie');
-                localStorage.setItem('token', response.body.token);
-                navigate('/user')
-
-            }
-
-        } catch (error) {
-            console.error('Erreur lors de la connexion', error);
-        }*/
     }
 
     return (
