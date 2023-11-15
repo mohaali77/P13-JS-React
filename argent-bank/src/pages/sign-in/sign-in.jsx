@@ -54,7 +54,6 @@ export default function SignIn() {
         const token = localStorage.getItem('token');
 
         if (token) {
-            // Utilisez le token pour récupérer le profil de l'utilisateur
             getUserProfile(token)
                 .then((response) => {
                     if (response) {
