@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { login } from "../../features/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { login, selectUser } from "../../features/userSlice";
 import { loginUser } from "../../axios/service";
 import HeaderLogin from "../../components/header-login/header-login";
 import { Navigate } from "react-router-dom";
+
 
 export default function SignIn() {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
+    const isUserConnected = useSelector(selectUser)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,7 +43,7 @@ export default function SignIn() {
 
     return (
         <>
-            <HeaderLogin />
+            {<HeaderLogin />}
             <main className="main bg-dark">
                 <section className="sign-in-content">
                     <i className="fa fa-user-circle sign-in-icon"></i>
