@@ -22,11 +22,13 @@ export async function loginUser(userCredentials) {
 
 export async function getUserProfile(token) {
     try {
-        const response = await axios.post(`${API_URL}login`, token, {
+        const response = await axios.post(`${API_URL}profile`, {}, {
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
         });
+
         console.log(response.data);
         return response.data;
     } catch (error) {
@@ -34,6 +36,7 @@ export async function getUserProfile(token) {
         throw error;
     }
 }
+
 
 export async function updateUserProfile() {
     try {

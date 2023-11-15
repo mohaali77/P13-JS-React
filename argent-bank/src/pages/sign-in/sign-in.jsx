@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login, selectUser } from "../../features/userSlice";
 import { loginUser } from "../../axios/service";
+import { getUserProfile } from "../../axios/service";
 import HeaderLogin from "../../components/header-login/header-login";
 import { useNavigate } from "react-router-dom";
 import HeaderLogout from "../../components/header-logout/header-logout";
@@ -13,6 +14,7 @@ export default function SignIn() {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const isUserConnected = useSelector(selectUser)
+    let token = localStorage.getItem("token")
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -37,13 +39,50 @@ export default function SignIn() {
                 );
                 console.log('Connexion réussie');
                 localStorage.setItem('token', response.body.token);
+
+                const response1 = await getUserProfile(token);
+
+                if (response1) {
+                    dispatch(
+                        login({
+                            firstName: response.body.firstName,
+                            lastName: response.body.lastName,
+                            id: response.body.id,
+                        })
+                    );
+                }
+
                 navigate('/user')
+
+
 
             }
 
         } catch (error) {
             console.error('Erreur lors de la connexion', error);
         }
+
+        /*try {
+            const response = await loginUser(token);
+
+            if (response) {
+                dispatch(
+                    login({
+                        email: user,
+                        password: password,
+                        token: response.body.token,
+                        isConnected: true
+                    })
+                );
+                console.log('Connexion réussie');
+                localStorage.setItem('token', response.body.token);
+                navigate('/user')
+
+            }
+
+        } catch (error) {
+            console.error('Erreur lors de la connexion', error);
+        }*/
     }
 
     return (
