@@ -29,17 +29,14 @@ export default function SignIn() {
             if (response) {
                 dispatch(
                     login({
-                        name: user,
+                        email: user,
                         password: password,
-                        token: response.body.token
+                        token: response.body.token,
+                        isConnected: true
                     })
                 );
                 console.log('Connexion réussie');
-                console.log(response.body.token);
-
                 localStorage.setItem('token', response.body.token);
-
-                console.log('Connexion réussie');
                 navigate('/user')
 
             }

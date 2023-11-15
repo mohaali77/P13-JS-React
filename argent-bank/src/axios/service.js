@@ -11,6 +11,7 @@ export async function loginUser(userCredentials) {
                 'Content-Type': 'application/json',
             },
         });
+        console.log(response.data);
         return response.data;
     } catch (error) {
         console.error('Erreur lors de la connexion', error);
@@ -18,14 +19,19 @@ export async function loginUser(userCredentials) {
     }
 }
 
-// ...
 
-
-export async function getUserProfile() {
+export async function getUserProfile(token) {
     try {
-        const response = await axios.post(`${API_URL}profile`);
-        return response.data
+        const response = await axios.post(`${API_URL}login`, token, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        console.log(response.data);
+        return response.data;
     } catch (error) {
+        console.error('Erreur lors de la connexion', error);
+        throw error;
     }
 }
 
