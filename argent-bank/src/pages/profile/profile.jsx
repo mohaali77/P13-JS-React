@@ -4,7 +4,7 @@ import { selectUser } from "../../features/userSlice";
 import { useSelector } from "react-redux";
 
 
-export default function User() {
+export default function Profile() {
     GetUserInState()
     const userState = useSelector(selectUser)
 

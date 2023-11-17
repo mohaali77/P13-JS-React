@@ -7,7 +7,7 @@ import { getUserProfile } from "../../axios/service";
 import { GetUserInState } from "../../hook/getUserInState";
 
 
-export default function SignIn() {
+export default function Login() {
 
     GetUserInState()
 
