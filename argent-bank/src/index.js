@@ -7,12 +7,14 @@ import './main.css'
 
 import { Provider } from 'react-redux';
 import store from "./app/store"
+import Header from './components/header/header';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
+        <Header />
         <App />
         <Footer />
       </Provider>
