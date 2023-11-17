@@ -1,6 +1,6 @@
 import Banner from "../../components/banner/banner";
 import Features from "../../components/features/features";
-import HeaderLogin from "../../components/header-login/header-login";
+import HeaderLogin from "../../components/header/header-login";
 
 import iconChat from '../../img/icon-chat.png'
 import iconMoney from '../../img/icon-money.png'

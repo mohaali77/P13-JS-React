@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, selectUser } from "../../features/userSlice";
 import { loginUser } from "../../axios/service";
 import { getUserProfile } from "../../axios/service";
-import HeaderLogin from "../../components/header-login/header-login";
+import HeaderLogin from "../../components/header/header-login";
 import HeaderLogout from "../../components/header-logout/header-logout";
 
 
