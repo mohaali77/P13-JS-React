@@ -1,10 +1,9 @@
-// hooks/useFetchUserProfile.js
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../features/userSlice';
 import { getUserProfile } from '../axios/service';
 
-export function useFetchUserProfile() {
+export function GetUserInState() {
     const dispatch = useDispatch();
 
     useEffect(() => {

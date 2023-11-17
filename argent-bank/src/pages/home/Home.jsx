@@ -5,7 +5,10 @@ import iconChat from '../../img/icon-chat.png'
 import iconMoney from '../../img/icon-money.png'
 import iconSecurity from '../../img/icon-security.png'
 
+import { GetUserInState } from "../../hook/getUserInState";
+
 export default function Home() {
+    GetUserInState()
     return <>
         <main>
             <Banner />
