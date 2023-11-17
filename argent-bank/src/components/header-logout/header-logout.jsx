@@ -1,7 +1,7 @@
 import argentBankLogo from '../../img/argentBankLogo.png'
 import { Link } from 'react-router-dom'
 import { logout } from "../../features/userSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 
 
