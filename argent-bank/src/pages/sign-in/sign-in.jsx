@@ -4,9 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, selectUser } from "../../features/userSlice";
 import { loginUser } from "../../axios/service";
 import { getUserProfile } from "../../axios/service";
-import HeaderLogin from "../../components/header/header";
-import HeaderLogout from "../../components/header-logout/header-logout";
-
 
 export default function SignIn() {
 
@@ -79,8 +76,6 @@ export default function SignIn() {
 
     return (
         <>
-
-            <HeaderLogin />
             {userState && userState.isConnected ? navigate(`/user/${userState.id}`) :
                 <main className="main bg-dark">
                     <section className="sign-in-content">
