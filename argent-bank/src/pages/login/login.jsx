@@ -54,7 +54,7 @@ export default function Login() {
 
     return (
         <>
-            {userState && userState.isConnected ? navigate(`/user/${userState.id}`) :
+            {userState && userState.isConnected ? navigate(`/profile/${userState.id}`) :
                 <main className="main bg-dark">
                     <section className="sign-in-content">
                         <i className="fa fa-user-circle sign-in-icon"></i>

@@ -39,7 +39,7 @@ export default function Header() {
             {userState && userState.isConnected ?
                 <>
                     <div >
-                        <Link class="main-nav-item" to={`user/${userState.id}`} >
+                        <Link class="main-nav-item" to={`profile/${userState.id}`} >
                             <i class="fa fa-user-circle"></i>
                             {' ' + userState.firstName}
                         </Link>
