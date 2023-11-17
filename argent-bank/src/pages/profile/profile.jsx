@@ -5,13 +5,13 @@ import { useSelector } from "react-redux";
 
 
 export default function Profile() {
-    GetUserInState()
     const userState = useSelector(selectUser)
+    GetUserInState()
 
     return <>
         <main className="main-user bg-dark">
             <div class="header">
-                <h1>Welcome back<br />{userState.firstName + ' ' + userState.lastName + ' !'}</h1>
+                <h1>Welcome back<br />{userState && userState.isConnected ? userState.firstName + ' ' + userState.lastName + ' !' : null}</h1>
                 <button class="edit-button">Edit Name</button>
             </div>
             <Account title='Argent Bank Checking' description='Available Balance' />
