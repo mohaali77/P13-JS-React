@@ -40,9 +40,10 @@ export default function SignIn() {
                             isConnected: true,
                         })
                     );
+                    //navigate(`/user/${response1.body.id}`)
                 }
 
-                navigate('/user/')
+
             }
 
         } catch (error) {
