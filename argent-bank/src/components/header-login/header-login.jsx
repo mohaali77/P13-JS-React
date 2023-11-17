@@ -35,13 +35,20 @@ export default function HeaderLogin() {
             </Link>
 
             {userState && userState.isConnected ?
+                <>
 
-                <div onClick={Logout} class="main-nav-item">
-                    <i class="fa fa-sign-out"></i>
-                    Sign Out
-                </div>
+                    <Link to={`user/${userState.id}`} class="main-nav-item">
+                        <i class="fa fa-user-circle"></i>
+                        {userState.firstName}
+                    </Link>
 
+                    <div onClick={Logout} class="main-nav-item">
+                        <i class="fa fa-sign-out"></i>
+                        Sign Out
+                    </div>
+                </>
                 :
+
 
                 <div>
                     <Link to='/sign-in' className="main-nav-item" >
