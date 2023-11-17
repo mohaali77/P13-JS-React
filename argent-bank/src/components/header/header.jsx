@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logout } from '../../features/userSlice'
 
-export default function HeaderLogin() {
+export default function Header() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
