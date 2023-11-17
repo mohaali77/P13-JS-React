@@ -26,7 +26,7 @@ export default function Header() {
             })
         );
 
-        navigate('/login')
+        navigate('/')
     }
 
     return <>
