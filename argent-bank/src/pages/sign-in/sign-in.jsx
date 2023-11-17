@@ -4,8 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, selectUser } from "../../features/userSlice";
 import { loginUser } from "../../axios/service";
 import { getUserProfile } from "../../axios/service";
+import { GetUserInState } from "../../hook/getUserInState";
+
 
 export default function SignIn() {
+
+    GetUserInState()
 
     const dispatch = useDispatch();
     const navigate = useNavigate()
@@ -47,32 +51,6 @@ export default function SignIn() {
             console.error('Erreur lors de la connexion', error);
         }
     }
-
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-
-        if (token) {
-            getUserProfile(token)
-                .then((response) => {
-                    if (response) {
-                        dispatch(
-                            login({
-                                firstName: response.body.firstName,
-                                lastName: response.body.lastName,
-                                id: response.body.id,
-                                email: response.body.email,
-                                password: response.body.password,
-                                token: token,
-                                isConnected: true,
-                            })
-                        );
-                    }
-                })
-                .catch((error) => {
-                    console.error('Erreur lors de la récupération du profil', error);
-                });
-        }
-    }, [dispatch]);
 
     return (
         <>

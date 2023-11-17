@@ -1,6 +1,9 @@
 import Account from "../../components/account/account";
+import { GetUserInState } from "../../hook/getUserInState";
+
 
 export default function User() {
+    GetUserInState()
     return <>
         <main className="main-user bg-dark">
             <div class="header">
