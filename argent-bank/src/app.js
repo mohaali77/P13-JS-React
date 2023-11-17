@@ -6,7 +6,7 @@ import SignIn from './pages/sign-in/sign-in'
 export default function App() {
   return <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/sign-in" element={<SignIn />} />
+    <Route path="/login" element={<SignIn />} />
     <Route path="/user/:id" element={<User />} />
   </Routes>
 }

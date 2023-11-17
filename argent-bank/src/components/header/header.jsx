@@ -14,6 +14,8 @@ export default function Header() {
 
     const Logout = (e) => {
 
+        e.preventDefault()
+
         console.log("a");
 
         localStorage.clear()
@@ -24,7 +26,7 @@ export default function Header() {
             })
         );
 
-        navigate('/sign-in')
+        navigate('/login')
     }
 
     return <>
@@ -36,24 +38,25 @@ export default function Header() {
 
             {userState && userState.isConnected ?
                 <>
+                    <div >
+                        <Link class="main-nav-item" to={`user/${userState.id}`} >
+                            <i class="fa fa-user-circle"></i>
+                            {' ' + userState.firstName}
+                        </Link>
 
-                    <Link to={`user/${userState.id}`} class="main-nav-item">
-                        <i class="fa fa-user-circle"></i>
-                        {userState.firstName}
-                    </Link>
-
-                    <div onClick={Logout} class="main-nav-item">
-                        <i class="fa fa-sign-out"></i>
-                        Sign Out
+                        <Link onClick={Logout} class="main-nav-item">
+                            <i class="fa fa-sign-out"></i>
+                            {' Sign Out'}
+                        </Link>
                     </div>
                 </>
                 :
 
 
                 <div>
-                    <Link to='/sign-in' className="main-nav-item" >
+                    <Link to='/login' className="main-nav-item" >
                         <i className="fa fa-user-circle"></i>
-                        Sign In
+                        {' Sign In'}
                     </Link>
                 </div>
             }
