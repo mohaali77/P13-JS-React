@@ -42,7 +42,7 @@ export default function SignIn() {
                     );
                 }
 
-                navigate('/user')
+                navigate('/user/')
             }
 
         } catch (error) {
