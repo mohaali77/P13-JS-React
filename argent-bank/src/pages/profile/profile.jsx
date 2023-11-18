@@ -3,12 +3,14 @@ import { GetUserInState } from "../../hook/getUserInState";
 import { selectUser } from "../../features/userSlice";
 import { useSelector } from "react-redux";
 import { updateUserProfile } from "../../axios/service";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 
 export default function Profile() {
     const editBtn = useRef(null)
     const editForm = useRef(null)
+    const [isEditing, setIsEditing] = useState(false);
+
     let formFirstname
     let formLastname
 
@@ -16,25 +18,25 @@ export default function Profile() {
     const userState = useSelector(selectUser)
     GetUserInState()
 
-    async function handleEdit() {
-
-        const response = await updateUserProfile(userState.token, { "firstName": 'test', "lastName": 'test', });
-        editBtn.current.classList.toggle('hide');
+    function showOrHideForm(e) {
+        e.preventDefault()
         editForm.current.classList.toggle('hide');
-        console.log(editBtn.current);
-
+        editBtn.current.classList.toggle('hide');
+        setIsEditing(!isEditing);
     }
 
-    function nice() {
-        editForm.current.classList.toggle('hide');
-        editBtn.current.classList.toggle('hide');
+    async function handleSubmit(e) {
+        e.preventDefault()
+        const userInfos = { "firstName": formFirstname, "lastName": formLastname, }
+        await updateUserProfile(userState.token, userInfos);
+        window.location.reload()
     }
 
     return <>
         <main className="main-user bg-dark">
             <div class="header">
                 <h1>Welcome back<br />{userState && userState.isConnected ? userState.firstName + ' ' + userState.lastName + ' !' : null}</h1>
-                <button onClick={handleEdit} ref={editBtn} class="edit-button">Edit Name</button>
+                <button onClick={showOrHideForm} ref={editBtn} class="edit-button">Edit Name</button>
                 <form className="edit-name hide" ref={editForm}>
                     <div className="input-edit">
                         <label htmlFor="firstName"></label>
@@ -44,7 +46,7 @@ export default function Profile() {
                             id="firstName"
                             placeholder={userState && userState.isConnected ? userState.firstName : null}
                             value={formFirstname}
-                            required
+                            required={isEditing}
                         />
 
                         <label htmlFor="lastName"></label>
@@ -57,13 +59,13 @@ export default function Profile() {
                             id="lastName"
                             placeholder={userState && userState.isConnected ? userState.lastName : null}
                             value={formLastname}
-                            required
+                            required={isEditing}
                         />
                     </div>
 
                     <div className="button-wrap">
-                        <button type="submit" className="save_cancel_button">Save</button>
-                        <button onClick={nice} className="save_cancel_button">Cancel</button>
+                        <button onClick={handleSubmit} type="submit" className="save_cancel_button">Save</button>
+                        <button onClick={showOrHideForm} className="save_cancel_button">Cancel</button>
                     </div>
 
                 </form>
