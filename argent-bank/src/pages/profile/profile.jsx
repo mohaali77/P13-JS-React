@@ -25,6 +25,11 @@ export default function Profile() {
 
     }
 
+    function nice() {
+        editForm.current.classList.toggle('hide');
+        editBtn.current.classList.toggle('hide');
+    }
+
     return <>
         <main className="main-user bg-dark">
             <div class="header">
@@ -58,7 +63,7 @@ export default function Profile() {
 
                     <div className="button-wrap">
                         <button type="submit" className="save_cancel_button">Save</button>
-                        <button type="submit" className="save_cancel_button">Cancel</button>
+                        <button onClick={nice} className="save_cancel_button">Cancel</button>
                     </div>
 
                 </form>
