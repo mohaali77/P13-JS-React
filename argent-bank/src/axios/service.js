@@ -37,12 +37,20 @@ export async function getUserProfile(token) {
     }
 }
 
-
-export async function updateUserProfile() {
+export async function updateUserProfile(token, userName) {
     try {
-        const response = await axios.put(`${API_URL}profile`);
-        return response.data
+        const response = await axios.put(`${API_URL}profile`, userName, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+        });
+
+        console.log(response.data);
+        return response.data;
     } catch (error) {
+        console.error('Erreur lors de la connexion', error);
+        throw error;
     }
 }
 
