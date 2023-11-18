@@ -21,6 +21,21 @@ body {
   display: flow-root;
 }
 
+.edit-name {
+  display: flex;
+  flex-direction: column;
+}
+
+#firstName {
+  height: 35px;
+  margin: 0px 20px;
+}
+
+.input-edit {
+  display: flex;
+  justify-content: center;
+}
+
 .bg-dark {
   background-color: #12002b;
 }

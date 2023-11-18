@@ -20,8 +20,8 @@ export default function Profile() {
                 <h1>Welcome back<br />{userState && userState.isConnected ? userState.firstName + ' ' + userState.lastName + ' !' : null}</h1>
                 <button onClick={handleEdit} class="edit-button">Edit Name</button>
                 <form className="edit-name">
-                    <div className="input-wrapper">
-                        <label htmlFor="firstName">Username</label>
+                    <div className="input-edit">
+                        <label htmlFor="firstName"></label>
                         <input
                             //onChange={}
                             type="text"
@@ -29,9 +29,8 @@ export default function Profile() {
                             //value={user}
                             required
                         />
-                    </div>
-                    <div className="input-wrapper">
-                        <label htmlFor="lastName">Username</label>
+
+                        <label htmlFor="lastName"></label>
                         <input
                             //onChange={}
                             type="text"
@@ -40,8 +39,9 @@ export default function Profile() {
                             required
                         />
                     </div>
-                    <button type="submit" className="sign-in-button">Sign In</button>
-                    <button type="submit" className="sign-in-button">Sign In</button>
+
+                    <button type="submit" className="sign-in-button">Save</button>
+                    <button type="submit" className="sign-in-button">Cancel</button>
 
                 </form>
             </div>
