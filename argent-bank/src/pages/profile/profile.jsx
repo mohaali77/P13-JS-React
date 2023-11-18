@@ -41,6 +41,8 @@ export default function Profile() {
                         />
                     </div>
                     <button type="submit" className="sign-in-button">Sign In</button>
+                    <button type="submit" className="sign-in-button">Sign In</button>
+
                 </form>
             </div>
             <Account title='Argent Bank Checking' description='Available Balance' />
