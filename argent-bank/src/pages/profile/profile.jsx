@@ -34,7 +34,7 @@ export default function Profile() {
                     <div className="input-edit">
                         <label htmlFor="firstName"></label>
                         <input
-                            onChange={ }
+                            onChange={(e) => { formFirstname = e.target.value }}
                             type="text"
                             id="firstName"
                             placeholder={userState && userState.isConnected ? userState.firstName : null}
@@ -44,7 +44,10 @@ export default function Profile() {
 
                         <label htmlFor="lastName"></label>
                         <input
-                            onChange={ }
+                            onChange={(e) => {
+                                formLastname = e.target.value
+                                console.log(formLastname);
+                            }}
                             type="text"
                             id="lastName"
                             placeholder={userState && userState.isConnected ? userState.lastName : null}
