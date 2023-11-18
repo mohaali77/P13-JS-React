@@ -7,16 +7,15 @@ import { useRef, useState } from "react";
 
 
 export default function Profile() {
+
+    GetUserInState()
+
+    const userState = useSelector(selectUser)
     const editBtn = useRef(null)
     const editForm = useRef(null)
     const [isEditing, setIsEditing] = useState(false);
-
-    let formFirstname
-    let formLastname
-
-
-    const userState = useSelector(selectUser)
-    GetUserInState()
+    const [formFirstname, setFormFirstname] = useState('');
+    const [formLastname, setFormLastname] = useState('');
 
     function showOrHideForm(e) {
         e.preventDefault()
@@ -36,12 +35,12 @@ export default function Profile() {
         <main className="main-user bg-dark">
             <div class="header">
                 <h1>Welcome back<br />{userState && userState.isConnected ? userState.firstName + ' ' + userState.lastName + ' !' : null}</h1>
-                <button onClick={showOrHideForm} ref={editBtn} class="edit-button">Edit Name</button>
+                <button onClick={showOrHideForm} ref={editBtn} className="edit-button">Edit Name</button>
                 <form className="edit-name hide" ref={editForm}>
                     <div className="input-edit">
                         <label htmlFor="firstName"></label>
                         <input
-                            onChange={(e) => { formFirstname = e.target.value }}
+                            onChange={(e) => { setFormFirstname(e.target.value) }}
                             type="text"
                             id="firstName"
                             placeholder={userState && userState.isConnected ? userState.firstName : null}
@@ -51,10 +50,7 @@ export default function Profile() {
 
                         <label htmlFor="lastName"></label>
                         <input
-                            onChange={(e) => {
-                                formLastname = e.target.value
-                                console.log(formLastname);
-                            }}
+                            onChange={(e) => { setFormLastname(e.target.value) }}
                             type="text"
                             id="lastName"
                             placeholder={userState && userState.isConnected ? userState.lastName : null}
