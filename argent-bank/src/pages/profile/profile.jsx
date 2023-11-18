@@ -9,6 +9,9 @@ import { useRef } from "react";
 export default function Profile() {
     const editBtn = useRef(null)
     const editForm = useRef(null)
+    let formFirstname
+    let formLastname
+
 
     const userState = useSelector(selectUser)
     GetUserInState()
@@ -31,21 +34,21 @@ export default function Profile() {
                     <div className="input-edit">
                         <label htmlFor="firstName"></label>
                         <input
-                            //onChange={}
+                            onChange={ }
                             type="text"
                             id="firstName"
                             placeholder={userState && userState.isConnected ? userState.firstName : null}
-                            //value={user}
+                            value={formFirstname}
                             required
                         />
 
                         <label htmlFor="lastName"></label>
                         <input
-                            //onChange={}
+                            onChange={ }
                             type="text"
                             id="lastName"
                             placeholder={userState && userState.isConnected ? userState.lastName : null}
-                            //value={user}
+                            value={formLastname}
                             required
                         />
                     </div>

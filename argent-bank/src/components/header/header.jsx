@@ -16,8 +16,6 @@ export default function Header() {
 
         e.preventDefault()
 
-        console.log("a");
-
         localStorage.clear()
 
         dispatch(
