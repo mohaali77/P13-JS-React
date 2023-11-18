@@ -3,14 +3,15 @@ import { GetUserInState } from "../../hook/getUserInState";
 import { selectUser } from "../../features/userSlice";
 import { useSelector } from "react-redux";
 import { hasExpectedRequestMetadata } from "@reduxjs/toolkit/dist/matchers";
+import { updateUserProfile } from "../../axios/service";
 
 
 export default function Profile() {
     const userState = useSelector(selectUser)
     GetUserInState()
 
-    const handleEdit = (e) => {
-
+    async function handleEdit() {
+        const response = await updateUserProfile(token);
     }
 
     return <>
