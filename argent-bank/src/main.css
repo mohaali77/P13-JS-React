@@ -28,12 +28,37 @@ body {
 
 #firstName {
   height: 35px;
-  margin: 0px 20px;
+  margin: 0px 10px;
+}
+
+#lastName {
+  height: 35px;
+  margin: 0px 10px;
+}
+
+.button-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.save_cancel_button {
+  font-weight: bold;
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  height: 30px;
+  width: 100px;
+  margin: 0px 10px;
+  margin-top: 10px;
 }
 
 .input-edit {
   display: flex;
   justify-content: center;
+}
+
+.hide {
+  display: none;
 }
 
 .bg-dark {
