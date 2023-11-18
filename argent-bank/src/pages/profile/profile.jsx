@@ -10,14 +10,14 @@ export default function Profile() {
     GetUserInState()
 
     async function handleEdit() {
-        const response = await updateUserProfile(token);
+        const response = await updateUserProfile(userState.token, { "email": 'test', "password": 'test', });
     }
 
     return <>
         <main className="main-user bg-dark">
             <div class="header">
                 <h1>Welcome back<br />{userState && userState.isConnected ? userState.firstName + ' ' + userState.lastName + ' !' : null}</h1>
-                <button onClik={handleEdit} class="edit-button">Edit Name</button>
+                <button onClick={handleEdit} class="edit-button">Edit Name</button>
             </div>
             <Account title='Argent Bank Checking' description='Available Balance' />
             <Account title='Argent Bank Savings' description='Available Balance' />
