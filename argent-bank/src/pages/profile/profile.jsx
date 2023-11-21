@@ -10,7 +10,7 @@ export default function Profile() {
 
     GetUserInState()
   s ssss qqsqs
-    const userState = useSelector(selectUser)
+   s const userState = useSelector(selectUser)
     const editBtn = useRef(null)
     const editForm = useRef(null)
     const [isEditing, setIsEditing] = useState(false);
