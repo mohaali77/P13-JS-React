@@ -21,7 +21,7 @@ export default function Profile() {
     const [formLastname, setFormLastname] = useState('');
 
     useEffect(() => {
-        if (userState === null) {
+        if (userState === null || userState.id !== id) {
             navigate('/login')
         }
     }, []);
