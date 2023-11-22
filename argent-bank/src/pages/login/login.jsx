@@ -23,9 +23,12 @@ export default function Login() {
 
         const response = await loginUser({ "email": user, "password": password, });
 
+        // si la requête est accepté, on insère le token dans le localStorage
         if (response) {
             localStorage.setItem('token', response.body.token);
             let token = localStorage.getItem('token');
+
+            // et on utilise le token du localStorage pour faire une requête de récupération des infos
 
             const response1 = await getUserProfile(token);
 
