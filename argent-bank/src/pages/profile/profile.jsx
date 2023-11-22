@@ -12,8 +12,6 @@ export default function Profile() {
     GetUserInState()
 
     const { id } = useParams()
-    console.log(id);
-
     const userState = useSelector(selectUser)
     const editBtn = useRef(null)
     const editForm = useRef(null)
@@ -21,6 +19,11 @@ export default function Profile() {
     const [formFirstname, setFormFirstname] = useState('');
     const [formLastname, setFormLastname] = useState('');
 
+    if (id && userState.id) {
+        if (id !== useState.id)
+    }
+
+    //affiche ou cache le formulaire de modification
     function showOrHideForm(e) {
         e.preventDefault()
         editForm.current.classList.toggle('hide');
@@ -28,6 +31,7 @@ export default function Profile() {
         setIsEditing(!isEditing);
     }
 
+    //soumet le formulaire pour modifier le nom
     async function handleSubmit(e) {
         e.preventDefault()
         const userInfos = { "firstName": formFirstname, "lastName": formLastname, }
