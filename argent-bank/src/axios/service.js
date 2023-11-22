@@ -36,6 +36,7 @@ export async function getUserProfile(token) {
     }
 }
 
+//Requête pour modifier le nom et prénom de l'utilisateur
 export async function updateUserProfile(token, userName) {
     try {
         const response = await axios.put(`${API_URL}profile`, userName, {
