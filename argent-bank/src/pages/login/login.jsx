@@ -17,6 +17,7 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const userState = useSelector(selectUser)
 
+    //on soumet le formulaire de connexion 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -41,8 +42,6 @@ export default function Login() {
                             isConnected: true,
                         })
                     );
-
-                    //navigate(`/profile/${userState.id}`)
                 }
             }
 
@@ -53,41 +52,44 @@ export default function Login() {
 
     return (
         <>
-            {userState && userState.isConnected ? navigate(`/profile/${userState.id}`) :
-                <main className="main bg-dark">
-                    <section className="sign-in-content">
-                        <i className="fa fa-user-circle sign-in-icon"></i>
-                        <h1>Sign In</h1>
-                        <form onSubmit={(e) => handleSubmit(e)}>
-                            <div className="input-wrapper">
-                                <label htmlFor="username">Username</label>
-                                <input
-                                    onChange={(e) => setUser(e.target.value)}
-                                    type="text"
-                                    id="username"
-                                    value={user}
-                                    required
-                                />
-                            </div>
 
-                            <div className="input-wrapper">
-                                <label htmlFor="password">Password</label>
-                                <input
-                                    type="password"
-                                    id="password"
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    value={password}
-                                    required
-                                />
-                            </div>
-                            <div className="input-remember">
-                                <input type="checkbox" id="remember-me" />
-                                <label htmlFor="remember-me">Remember me</label>
-                            </div>
-                            <button type="submit" className="sign-in-button">Sign In</button>
-                        </form>
-                    </section>
-                </main >
+            {
+                //Si l'utilisateur est connecté, on affiche directement sa page profil, sinon on affiche la page login 
+                userState && userState.isConnected ? navigate(`/profile/${userState.id}`) :
+                    <main className="main bg-dark">
+                        <section className="sign-in-content">
+                            <i className="fa fa-user-circle sign-in-icon"></i>
+                            <h1>Sign In</h1>
+                            <form onSubmit={(e) => handleSubmit(e)}>
+                                <div className="input-wrapper">
+                                    <label htmlFor="username">Username</label>
+                                    <input
+                                        onChange={(e) => setUser(e.target.value)}
+                                        type="text"
+                                        id="username"
+                                        value={user}
+                                        required
+                                    />
+                                </div>
+
+                                <div className="input-wrapper">
+                                    <label htmlFor="password">Password</label>
+                                    <input
+                                        type="password"
+                                        id="password"
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        value={password}
+                                        required
+                                    />
+                                </div>
+                                <div className="input-remember">
+                                    <input type="checkbox" id="remember-me" />
+                                    <label htmlFor="remember-me">Remember me</label>
+                                </div>
+                                <button type="submit" className="sign-in-button">Sign In</button>
+                            </form>
+                        </section>
+                    </main >
             }
         </>
     );
