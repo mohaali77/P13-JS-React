@@ -41,9 +41,9 @@ export default function Login() {
                             isConnected: true,
                         })
                     );
+
+                    //navigate(`/profile/${userState.id}`)
                 }
-
-
             }
 
         } catch (error) {

@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/home";
-import User from './pages/profile/profile'
+import Profile from './pages/profile/profile'
 import SignIn from './pages/login/login'
 
 export default function App() {
