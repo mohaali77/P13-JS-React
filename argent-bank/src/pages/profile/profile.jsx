@@ -3,7 +3,7 @@ import { GetUserInState } from "../../hook/getUserInState";
 import { selectUser } from "../../features/userSlice";
 import { useSelector } from "react-redux";
 import { updateUserProfile } from "../../axios/service";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 
@@ -20,11 +20,12 @@ export default function Profile() {
     const [formFirstname, setFormFirstname] = useState('');
     const [formLastname, setFormLastname] = useState('');
 
-    console.log(userState);
+    useEffect(() => {
+        if (userState === null) {
+            navigate('/login')
+        }
+    }, []);
 
-    if (id === userState.id) {
-        console.log(1);
-    }
 
     //affiche ou cache le formulaire de modification
     function showOrHideForm(e) {
