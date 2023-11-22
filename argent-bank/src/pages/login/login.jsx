@@ -17,36 +17,31 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const userState = useSelector(selectUser)
 
-    //on soumet le formulaire de connexion 
+    //fonction qui soumet le formulaire de connexion 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            const response = await loginUser({ "email": user, "password": password, });
+        const response = await loginUser({ "email": user, "password": password, });
 
-            if (response) {
-                localStorage.setItem('token', response.body.token);
-                let token = localStorage.getItem('token');
+        if (response) {
+            localStorage.setItem('token', response.body.token);
+            let token = localStorage.getItem('token');
 
-                const response1 = await getUserProfile(token);
+            const response1 = await getUserProfile(token);
 
-                if (response1) {
-                    dispatch(
-                        login({
-                            firstName: response1.body.firstName,
-                            lastName: response1.body.lastName,
-                            id: response1.body.id,
-                            email: user,
-                            password: password,
-                            token: response.body.token,
-                            isConnected: true,
-                        })
-                    );
-                }
+            if (response1) {
+                dispatch(
+                    login({
+                        firstName: response1.body.firstName,
+                        lastName: response1.body.lastName,
+                        id: response1.body.id,
+                        email: user,
+                        password: password,
+                        token: response.body.token,
+                        isConnected: true,
+                    })
+                );
             }
-
-        } catch (error) {
-            console.error('Erreur lors de la connexion', error);
         }
     }
 
