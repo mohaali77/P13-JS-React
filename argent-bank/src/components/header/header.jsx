@@ -38,29 +38,32 @@ export default function Header() {
                 <h1 className="sr-only">Argent Bank</h1>
             </Link>
 
-            {userState && userState.isConnected ?
-                <>
-                    <div >
-                        <Link className="main-nav-item" to={`profile/${userState.id}`} >
-                            <i className="fa fa-user-circle"></i>
-                            {' ' + userState.firstName}
-                        </Link>
+            {
+                //si l'utilisateur est connecté, on affiche le nom de l'utilisateur avec un lien vers le profil 
+                //et un bouton de déconnexion
+                userState && userState.isConnected ?
+                    <>
+                        <div >
+                            <Link className="main-nav-item" to={`profile/${userState.id}`} >
+                                <i className="fa fa-user-circle"></i>
+                                {' ' + userState.firstName}
+                            </Link>
 
-                        <Link onClick={Logout} className="main-nav-item">
-                            <i className="fa fa-sign-out"></i>
-                            {' Sign Out'}
+                            <Link onClick={Logout} className="main-nav-item">
+                                <i className="fa fa-sign-out"></i>
+                                {' Sign Out'}
+                            </Link>
+                        </div>
+                    </>
+                    :
+
+                    //sinon on met un simple lien vers la page de connexion
+                    <div>
+                        <Link to='/login' className="main-nav-item" >
+                            <i className="fa fa-user-circle"></i>
+                            {' Sign In'}
                         </Link>
                     </div>
-                </>
-                :
-
-
-                <div>
-                    <Link to='/login' className="main-nav-item" >
-                        <i className="fa fa-user-circle"></i>
-                        {' Sign In'}
-                    </Link>
-                </div>
             }
         </nav>
     </>
