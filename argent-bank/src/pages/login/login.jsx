@@ -29,9 +29,9 @@ export default function Login() {
             let token = localStorage.getItem('token');
 
             // et on utilise le token du localStorage pour faire une requête de récupération des infos
-
             const response1 = await getUserProfile(token);
 
+            //si la requête est accepté, on récupère toute les données dans le state
             if (response1) {
                 dispatch(
                     login({
