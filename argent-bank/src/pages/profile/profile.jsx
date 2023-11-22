@@ -20,10 +20,10 @@ export default function Profile() {
     const [formFirstname, setFormFirstname] = useState('');
     const [formLastname, setFormLastname] = useState('');
 
-    if (id && userState.id) {
-        if (id !== userState.id) {
-            console.log(1);
-        }
+    console.log(userState);
+
+    if (id === userState.id) {
+        console.log(1);
     }
 
     //affiche ou cache le formulaire de modification
