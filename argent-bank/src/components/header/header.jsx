@@ -12,18 +12,22 @@ export default function Header() {
     const dispatch = useDispatch();
     const userState = useSelector(selectUser);
 
+    //fonction de deconnexion de l'utilisateur
     const Logout = (e) => {
 
         e.preventDefault()
 
+        //on supprime le localStorage
         localStorage.clear()
 
+        //on supprime l'utilisateur du state
         dispatch(
             logout({
                 user: null
             })
         );
 
+        //on redirige vers la page d'accueil
         navigate('/')
     }
 
@@ -37,13 +41,13 @@ export default function Header() {
             {userState && userState.isConnected ?
                 <>
                     <div >
-                        <Link class="main-nav-item" to={`profile/${userState.id}`} >
-                            <i class="fa fa-user-circle"></i>
+                        <Link className="main-nav-item" to={`profile/${userState.id}`} >
+                            <i className="fa fa-user-circle"></i>
                             {' ' + userState.firstName}
                         </Link>
 
-                        <Link onClick={Logout} class="main-nav-item">
-                            <i class="fa fa-sign-out"></i>
+                        <Link onClick={Logout} className="main-nav-item">
+                            <i className="fa fa-sign-out"></i>
                             {' Sign Out'}
                         </Link>
                     </div>
