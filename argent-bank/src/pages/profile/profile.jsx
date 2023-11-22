@@ -20,6 +20,8 @@ export default function Profile() {
     const [formFirstname, setFormFirstname] = useState('');
     const [formLastname, setFormLastname] = useState('');
 
+    //si il n'y a pas d'utilisateur, ou que l'id de l'url est différent de l'id de l'utilisateur du state
+    //on renvoi sur la page login (ou la page profil de l'utilisateur dans le states)
     useEffect(() => {
         if (userState === null || userState.id !== id) {
             navigate('/login')
@@ -27,7 +29,7 @@ export default function Profile() {
     }, []);
 
 
-    //affiche ou cache le formulaire de modification
+    //affiche ou masque le formulaire de modification
     function showOrHideForm(e) {
         e.preventDefault()
         editForm.current.classList.toggle('hide');
