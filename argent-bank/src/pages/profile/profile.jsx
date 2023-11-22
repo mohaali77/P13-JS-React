@@ -47,7 +47,7 @@ export default function Profile() {
 
     return <>
         <main className="main-user bg-dark">
-            <div class="header">
+            <div className="header">
                 <h1>Welcome back<br />{userState && userState.isConnected ? userState.firstName + ' ' + userState.lastName + ' !' : null}</h1>
                 <button onClick={showOrHideForm} ref={editBtn} className="edit-button">Edit Name</button>
                 <form className="edit-name hide" ref={editForm}>
