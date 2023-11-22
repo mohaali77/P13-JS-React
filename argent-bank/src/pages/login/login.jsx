@@ -41,8 +41,6 @@ export default function Login() {
                             isConnected: true,
                         })
                     );
-
-                    navigate(`/user/${response1.body.id}`)
                 }
 
 
