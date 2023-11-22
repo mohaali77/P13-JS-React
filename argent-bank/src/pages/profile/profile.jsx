@@ -4,11 +4,16 @@ import { selectUser } from "../../features/userSlice";
 import { useSelector } from "react-redux";
 import { updateUserProfile } from "../../axios/service";
 import { useRef, useState } from "react";
+import { useParams } from "react-router-dom";
 
 
 export default function Profile() {
 
     GetUserInState()
+
+    const { id } = useParams()
+    console.log(id);
+
     const userState = useSelector(selectUser)
     const editBtn = useRef(null)
     const editForm = useRef(null)
