@@ -2,8 +2,7 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:3001/api/v1/user/';
 
-// ...
-
+//Requête pour se connexion
 export async function loginUser(userCredentials) {
     try {
         const response = await axios.post(`${API_URL}login`, userCredentials, {
@@ -19,7 +18,7 @@ export async function loginUser(userCredentials) {
     }
 }
 
-
+//Requête pour récupérer les données de l'utilisateur
 export async function getUserProfile(token) {
     try {
         const response = await axios.post(`${API_URL}profile`, {}, {

@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux';
 import { login } from '../features/userSlice';
 import { getUserProfile } from '../axios/service';
 
+
+// fonction qui permet de récupérer constamment les données de l'utilisateur avec une requête 
+// si un token est présent dans le localStorage
 export function GetUserInState() {
     const dispatch = useDispatch();
 
