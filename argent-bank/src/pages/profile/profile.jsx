@@ -4,7 +4,7 @@ import { selectUser } from "../../features/userSlice";
 import { useSelector } from "react-redux";
 import { updateUserProfile } from "../../axios/service";
 import { useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 
 export default function Profile() {
@@ -13,6 +13,7 @@ export default function Profile() {
 
     const { id } = useParams()
     const userState = useSelector(selectUser)
+    const navigate = useNavigate()
     const editBtn = useRef(null)
     const editForm = useRef(null)
     const [isEditing, setIsEditing] = useState(false);
@@ -20,7 +21,9 @@ export default function Profile() {
     const [formLastname, setFormLastname] = useState('');
 
     if (id && userState.id) {
-        if (id !== useState.id)
+        if (id !== userState.id) {
+            navigate(`/user/${response1.body.id}`)
+        }
     }
 
     //affiche ou cache le formulaire de modification
