@@ -9,4 +9,4 @@ export default function App() {
     <Route path="/login" element={<Login />} />
     <Route path="/profile/:id" element={<Profile />} />
   </Routes>
-} A
+} AA
