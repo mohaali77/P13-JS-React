@@ -20,9 +20,9 @@ export default function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await loginUser({ "email": user, "password": password });
-
         try {
+            const response = await loginUser({ "email": user, "password": password });
+
             if (response) {
                 localStorage.setItem('token', response.body.token);
                 let token = localStorage.getItem('token');
@@ -44,7 +44,7 @@ export default function Login() {
                 }
             }
         } catch (error) {
-            // Mise à jour de l'état d'erreur si les identifiants sont incorrects
+            // Gestion des erreurs Axios ici
             console.error("Une erreur s'est produite lors de la requête :", error.response ? error.response.data : error.message);
             setError("Identifiants incorrects. Veuillez réessayer.");
         }
