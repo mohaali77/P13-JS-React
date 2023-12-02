@@ -1,4 +1,9 @@
+import { useSelector } from "react-redux";
+import { selectUser } from "../../features/userSlice";
+
 export default function Account({ title, description }) {
+    const userState = useSelector(selectUser);
+
     return <>
         <section className="account">
             <div className="account-content-wrapper">

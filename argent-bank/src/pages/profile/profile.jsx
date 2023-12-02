@@ -80,9 +80,9 @@ export default function Profile() {
 
                 </form>
             </div>
-            <Account title='Argent Bank Checking' description='Available Balance' />
-            <Account title='Argent Bank Savings' description='Available Balance' />
-            <Account title='Argent Bank Credit Card' description='Current Balance' />
+            <Account title='Argent Bank Checking (x8349)' description='Available Balance' />
+            <Account title='Argent Bank Savings (x6712)' description='Available Balance' />
+            <Account title='Argent Bank Credit Card (x8349)' description='Current Balance' />
         </main>
 
     </>
