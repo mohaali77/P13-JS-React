@@ -13,6 +13,16 @@ body {
   min-height: 100vh;
 }
 
+#errorMsg {
+  display: flex;
+}
+
+#errorMsg p {
+  color: red;
+  margin-top: -7px;
+  margin-bottom: 7px;
+}
+
 .main {
   display: flex;
 }
