@@ -47,7 +47,7 @@ export default function Login() {
             // Gestion des erreurs 
             console.error('Les identifiants sont incorrects', error);
             //On 
-            setError("Identifiants incorrects. Veuillez réessayer.");
+            setError("Identifiants incorrects.");
         }
     }
 
@@ -82,7 +82,7 @@ export default function Login() {
                                     required
                                 />
                             </div>
-                            {error ? <div id="errorMsg">{error}</div> : null}
+                            <div id="errorMsg">{error ? <p>{error}</p> : null}</div>
                             <div className="input-remember">
                                 <input type="checkbox" id="remember-me" />
                                 <label htmlFor="remember-me">Remember me</label>
