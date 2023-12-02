@@ -92,9 +92,9 @@ export default function Profile() {
 
                 </form>
             </div>
-            <Account title='Argent Bank Checking (x8349)' amount={tonyArray.checking} description='Available Balance' />
-            <Account title='Argent Bank Savings (x6712)' amount={tonyArray.saving} description='Available Balance' />
-            <Account title='Argent Bank Credit Card (x8349)' amount={tonyArray.creditCard} description='Current Balance' />
+            <Account title='Argent Bank Checking (x8349)' amountTony={tonyArray.checking} amountSteve={steveArray.checking} description='Available Balance' />
+            <Account title='Argent Bank Savings (x6712)' amountTony={tonyArray.saving} amountSteve={steveArray.saving} description='Available Balance' />
+            <Account title='Argent Bank Credit Card (x8349)' amountTony={tonyArray.creditCard} amountSteve={steveArray.creditCard} description='Current Balance' />
         </main>
 
     </>
