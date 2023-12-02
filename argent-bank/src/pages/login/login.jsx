@@ -44,8 +44,9 @@ export default function Login() {
                 }
             }
         } catch (error) {
-            // Gestion des erreurs Axios ici
-            console.error("Une erreur s'est produite lors de la requête :", error.response ? error.response.data : error.message);
+            // Gestion des erreurs 
+            console.error('Les identifiants sont incorrects', error);
+            //On 
             setError("Identifiants incorrects. Veuillez réessayer.");
         }
     }
@@ -81,7 +82,7 @@ export default function Login() {
                                     required
                                 />
                             </div>
-                            <div id="errorMsg">{error && <p>{error}</p>}</div>
+                            {error ? <div id="errorMsg">{error}</div> : null}
                             <div className="input-remember">
                                 <input type="checkbox" id="remember-me" />
                                 <label htmlFor="remember-me">Remember me</label>
