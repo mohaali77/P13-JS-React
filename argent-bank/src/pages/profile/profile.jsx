@@ -45,6 +45,18 @@ export default function Profile() {
         window.location.reload()
     }
 
+    const tonyArray = {
+        checking: '$2,082.79',
+        saving: '$10,928.42',
+        creditCard: '$184.30'
+    }
+
+    const steveArray = {
+        checking: '$1,483.14',
+        saving: '$7,980.90',
+        creditCard: '$243.31'
+    }
+
     return <>
         <main className="main-user bg-dark">
             <div className="header">
@@ -80,9 +92,9 @@ export default function Profile() {
 
                 </form>
             </div>
-            <Account title='Argent Bank Checking (x8349)' description='Available Balance' />
-            <Account title='Argent Bank Savings (x6712)' description='Available Balance' />
-            <Account title='Argent Bank Credit Card (x8349)' description='Current Balance' />
+            <Account title='Argent Bank Checking (x8349)' amountTony={tonyArray.checking} amountSteve={steveArray.checking} description='Available Balance' />
+            <Account title='Argent Bank Savings (x6712)' amountTony={tonyArray.saving} amountSteve={steveArray.saving} description='Available Balance' />
+            <Account title='Argent Bank Credit Card (x8349)' amountTony={tonyArray.creditCard} amountSteve={steveArray.creditCard} description='Current Balance' />
         </main>
 
     </>
