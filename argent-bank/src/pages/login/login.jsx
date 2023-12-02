@@ -22,7 +22,6 @@ export default function Login() {
         e.preventDefault();
 
         const response = await loginUser({ "email": user, "password": password, });
-
         // si la requête est accepté, on insère le token dans le localStorage
         if (response) {
             localStorage.setItem('token', response.body.token);
