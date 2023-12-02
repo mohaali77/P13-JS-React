@@ -45,8 +45,6 @@ export default function Login() {
                     })
                 );
             }
-        } else {
-            console.log(1);
         }
     }
 
