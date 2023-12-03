@@ -14,7 +14,7 @@ export default function Account({ title, description, amountTony, amountSteve })
             </div>
             <div className="account-content-wrapper cta">
                 <button className="transaction-button">View transactions</button>
-            </div>ZZZZZZZ
+            </div>ZZZZZZZZ
         </section>
     </>
 }
