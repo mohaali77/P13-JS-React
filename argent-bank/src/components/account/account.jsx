@@ -16,5 +16,5 @@ export default function Account({ title, description, amountTony, amountSteve })
                 <button className="transaction-button">View transactions</button>
             </div>
         </section>
-    </>Assssssssssssssss
+    </>Asssssssssssssssss
 }
