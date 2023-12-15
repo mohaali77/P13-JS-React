@@ -13,6 +13,11 @@ body {
   min-height: 100vh;
 }
 
+.errorMsg {
+  width: 100%;
+  margin-top: 5px;
+}
+
 #errorMsg {
   display: flex;
 }
@@ -34,6 +39,7 @@ body {
 .edit-name {
   display: flex;
   flex-direction: column;
+  font-size: 12px;
 }
 
 #firstName {
@@ -65,6 +71,7 @@ body {
 .input-edit {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .hide {
