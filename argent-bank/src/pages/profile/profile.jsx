@@ -90,7 +90,7 @@ export default function Profile() {
                             value={formLastname}
                             required={isEditing}
                         />
-                        <p className="errorMsg">{errorMsg}</p>
+                        {errorMsg ? <p className="errorMsg">{errorMsg}</p> : null}
                     </div>
 
                     <div className="button-wrap">
