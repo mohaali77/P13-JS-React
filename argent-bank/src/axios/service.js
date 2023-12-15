@@ -10,7 +10,6 @@ export async function loginUser(userCredentials) {
                 'Content-Type': 'application/json',
             },
         });
-        console.log(response.data);
         return response.data;
     } catch (error) {
         console.error('Erreur lors de la connexion', error);
@@ -28,7 +27,6 @@ export async function getUserProfile(token) {
             },
         });
 
-        console.log(response.data);
         return response.data;
     } catch (error) {
         console.error('Erreur lors de la connexion', error);
@@ -46,7 +44,6 @@ export async function updateUserProfile(token, userName) {
             },
         });
 
-        console.log(response.data);
         return response.data;
     } catch (error) {
         console.error('Erreur lors de la connexion', error);

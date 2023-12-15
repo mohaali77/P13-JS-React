@@ -40,9 +40,14 @@ export default function Profile() {
     //soumet le formulaire pour modifier le nom
     async function handleSubmit(e) {
         e.preventDefault()
-        const userInfos = { "firstName": formFirstname, "lastName": formLastname, }
-        await updateUserProfile(userState.token, userInfos);
-        window.location.reload()
+        if (formLastname === '' || formFirstname === '') {
+            console.log('impossible');
+        } else {
+            const userInfos = { "firstName": formFirstname, "lastName": formLastname, }
+            await updateUserProfile(userState.token, userInfos);
+            window.location.reload()
+        }
+
     }
 
     const tonyArray = {
