@@ -90,6 +90,7 @@ export default function Profile() {
                             value={formLastname}
                             required={isEditing}
                         />
+                        <p>{errorMsg}</p>
                     </div>
 
                     <div className="button-wrap">
