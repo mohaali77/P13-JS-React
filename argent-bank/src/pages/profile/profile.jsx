@@ -19,6 +19,7 @@ export default function Profile() {
     const [isEditing, setIsEditing] = useState(false);
     const [formFirstname, setFormFirstname] = useState('');
     const [formLastname, setFormLastname] = useState('');
+    const [errorMsg, seterrorMsg] = useState('');
 
     //si il n'y a pas d'utilisateur, ou que l'id de l'url est différent de l'id de l'utilisateur du state
     //on renvoi sur la page login (ou la page profil de l'utilisateur dans le states)
