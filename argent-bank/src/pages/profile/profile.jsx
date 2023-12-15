@@ -43,6 +43,7 @@ export default function Profile() {
         e.preventDefault()
         if (formLastname === '' || formFirstname === '') {
             console.log('impossible');
+            seterrorMsg('Veuillez remplir les champs')
         } else {
             const userInfos = { "firstName": formFirstname, "lastName": formLastname, }
             await updateUserProfile(userState.token, userInfos);
