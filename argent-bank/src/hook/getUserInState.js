@@ -3,18 +3,19 @@ import { useDispatch } from 'react-redux';
 import { login } from '../features/userSlice';
 import { getUserProfile } from '../axios/service';
 
-
 // fonction qui permet de récupérer constamment les données de l'utilisateur avec une requête 
 // si un token est présent dans le localStorage
 export function GetUserInState() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const fetchData = async () => {
+            try {
+                const token = localStorage.getItem('token');
 
-        if (token) {
-            getUserProfile(token)
-                .then((response) => {
+                if (token) {
+                    const response = await getUserProfile(token);
+
                     if (response) {
                         dispatch(
                             login({
@@ -28,10 +29,12 @@ export function GetUserInState() {
                             })
                         );
                     }
-                })
-                .catch((error) => {
-                    console.error('Erreur lors de la récupération du profil', error);
-                });
-        }
+                }
+            } catch (error) {
+                console.error('Erreur lors de la récupération du profil', error);
+            }
+        };
+
+        fetchData();
     }, [dispatch]);
 }
